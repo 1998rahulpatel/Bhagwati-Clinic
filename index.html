@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bhagwati Clinic / भगवती क्लिनिक</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600&family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-blue: #3b82f6;
+        --dark-blue: #1d4ed8;
+        --deep-purple: #400093;
+        --accent-red: #dc2626;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      .hindi {
+        font-family: "Hind", sans-serif;
+      }
+
+      .header-gradient {
+        background: linear-gradient(
+          135deg,
+          var(--deep-purple) 0%,
+          var(--dark-blue) 100%
+        );
+      }
+
+      .hero-gradient {
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue) 0%,
+          var(--dark-blue) 100%
+        );
+      }
+
+      .badge-gradient {
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue) 0%,
+          var(--dark-blue) 100%
+        );
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .animate-pulse-slow {
+        animation: pulse 4s ease infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .service-card {
+        transition: all 0.3s ease;
+        border-left: 4px solid var(--primary-blue);
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+      }
+
+      .testimonial-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .contact-card {
+        background: rgba(243, 244, 246, 0.8);
+        backdrop-filter: blur(5px);
+      }
+
+      .nav-link {
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: var(--primary-blue);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+
+      .mobile-menu.open {
+        max-height: 500px;
+      }
+
+      /* Testimonial Carousel */
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+
+      .testimonial-carousel {
+        position: relative;
+        overflow: hidden;
+        display: none;
+      }
+
+      .testimonial-slide {
+        display: none;
+        transition: opacity 0.5s ease;
+      }
+
+      .testimonial-slide.active {
+        display: block;
+        opacity: 1;
+      }
+
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .carousel-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .carousel-dot.active {
+        background-color: white;
+      }
+
+      @media (max-width: 1024px) {
+        .testimonial-grid {
+          display: none;
+        }
+        .testimonial-carousel {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-3">
+          <div class="flex items-center space-x-2">
+            <i
+              class="fas fa-heartbeat text-2xl text-blue-600 animate-pulse-slow"
+            ></i>
+            <h1 class="text-xl font-bold text-gray-800">Bhagwati Clinic</h1>
+          </div>
+
+          <nav class="hidden md:flex space-x-6">
+            <a
+              href="#home"
+              class="nav-link text-gray-700 hover:text-blue-600 transition"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="nav-link text-gray-700 hover:text-blue-600 transition"
+              >About</a
+            >
+            <a
+              href="#services"
+              class="nav-link text-gray-700 hover:text-blue-600 transition"
+              >Services</a
+            >
+            <a
+              href="#facilities"
+              class="nav-link text-gray-700 hover:text-blue-600 transition"
+              >Facilities</a
+            >
+            <a
+              href="#contact"
+              class="nav-link text-gray-700 hover:text-blue-600 transition"
+              >Contact</a
+            >
+          </nav>
+
+          <button
+            class="md:hidden text-gray-700 focus:outline-none"
+            id="menu-toggle"
+          >
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu md:hidden bg-white" id="mobile-menu">
+          <div class="flex flex-col space-y-2 py-3">
+            <a
+              href="#home"
+              class="px-3 py-2 text-gray-700 hover:bg-blue-50 rounded"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="px-3 py-2 text-gray-700 hover:bg-blue-50 rounded"
+              >About</a
+            >
+            <a
+              href="#services"
+              class="px-3 py-2 text-gray-700 hover:bg-blue-50 rounded"
+              >Services</a
+            >
+            <a
+              href="#facilities"
+              class="px-3 py-2 text-gray-700 hover:bg-blue-50 rounded"
+              >Facilities</a
+            >
+            <a
+              href="#contact"
+              class="px-3 py-2 text-gray-700 hover:bg-blue-50 rounded"
+              >Contact</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white py-12 md:py-20">
+      <div
+        class="container mx-auto px-4 flex flex-col md:flex-row items-center"
+      >
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Dr. Manshi Singh</h2>
+          <p class="text-xl md:text-2xl mb-6 font-medium">
+            Specialized Medical Professional
+          </p>
+          <p class="mb-8 text-blue-100 max-w-lg">
+            Providing compassionate healthcare with a focus on patient
+            well-being and health education for the community.
+          </p>
+
+          <div
+            class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4"
+          >
+            <a
+              href="#contact"
+              class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition transform hover:scale-105 flex items-center justify-center"
+            >
+              <i class="fas fa-calendar-check mr-2"></i> Book Appointment
+            </a>
+            <a
+              href="tel:8375807290"
+              class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition flex items-center justify-center"
+            >
+              <i class="fas fa-phone-alt mr-2"></i> Call Now
+            </a>
+          </div>
+        </div>
+
+        <div class="md:w-1/2 flex justify-center">
+          <div
+            class="relative w-64 h-64 md:w-80 md:h-80 bg-white rounded-full overflow-hidden shadow-2xl animate-float"
+          >
+            <!-- Doctor image placeholder with better styling -->
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-300 flex items-center justify-center"
+            >
+              <div class="text-center p-6">
+                <i class="fas fa-user-md text-6xl text-blue-600 mb-4"></i>
+                <p class="text-blue-800 font-medium">Dr. Manshi Singh</p>
+                <p class="text-blue-700 text-sm">Medical Director</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Availability Banner -->
+    <section class="py-8 bg-white">
+      <div class="container mx-auto px-4">
+        <div
+          class="badge-gradient rounded-xl p-6 text-white shadow-lg max-w-4xl mx-auto"
+        >
+          <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center">
+            Service Availability
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div
+              class="bg-blue-400 bg-opacity-30 p-4 rounded-lg hover:bg-opacity-40 transition transform hover:scale-[1.02]"
+            >
+              <div class="flex flex-col items-center text-center">
+                <div class="bg-white bg-opacity-20 rounded-full p-3 mb-3">
+                  <i class="fas fa-laptop-medical text-2xl"></i>
+                </div>
+                <h4 class="text-xl font-semibold">Online</h4>
+                <p class="text-blue-100 text-sm mb-2">Consultation</p>
+                <span
+                  class="bg-green-500 text-white text-xs px-2 py-1 rounded-full"
+                  >Available</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="bg-blue-400 bg-opacity-30 p-4 rounded-lg hover:bg-opacity-40 transition transform hover:scale-[1.02]"
+            >
+              <div class="flex flex-col items-center text-center">
+                <div class="bg-white bg-opacity-20 rounded-full p-3 mb-3">
+                  <i class="fas fa-procedures text-2xl"></i>
+                </div>
+                <h4 class="text-xl font-semibold">OPD</h4>
+                <p class="text-blue-100 text-sm mb-2">Outpatient</p>
+                <span
+                  class="bg-green-500 text-white text-xs px-2 py-1 rounded-full"
+                  >Available</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="bg-blue-400 bg-opacity-30 p-4 rounded-lg hover:bg-opacity-40 transition transform hover:scale-[1.02]"
+            >
+              <div class="flex flex-col items-center text-center">
+                <div class="bg-white bg-opacity-20 rounded-full p-3 mb-3">
+                  <i class="fas fa-hospital text-2xl"></i>
+                </div>
+                <h4 class="text-xl font-semibold">IPD</h4>
+                <p class="text-blue-100 text-sm mb-2">Inpatient</p>
+                <span
+                  class="bg-green-500 text-white text-xs px-2 py-1 rounded-full"
+                  >Available</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+            <a
+              href="https://wa.me/918375807290"
+              class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 flex items-center justify-center gap-2"
+            >
+              <i class="fab fa-whatsapp text-xl"></i> WhatsApp Consultation
+            </a>
+            <a
+              href="mailto:manu03762@gmail.com"
+              class="bg-white hover:bg-gray-100 text-blue-600 px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 flex items-center justify-center gap-2"
+            >
+              <i class="fas fa-envelope text-xl"></i> Email Inquiry
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-2">
+            About Dr. Manshi Singh
+          </h2>
+          <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row items-center">
+          <div class="lg:w-2/5 mb-8 lg:mb-0 flex justify-center">
+            <div
+              class="relative w-64 h-80 md:w-72 md:h-96 rounded-lg overflow-hidden shadow-xl transform transition hover:scale-[1.02]"
+            >
+              <!-- Professional image placeholder with better styling -->
+              <div
+                class="absolute inset-0 bg-gradient-to-b from-blue-100 to-blue-300 flex items-end justify-center"
+              >
+                <div class="text-center p-6 w-full bg-white bg-opacity-90">
+                  <img
+                    src="./dp.png"
+                    alt="Dr. Manshi Singh"
+                    class="w-full h-full object-cover"
+                  />
+                  <h3 class="text-xl font-bold text-blue-800">
+                    Dr. Manshi Singh
+                  </h3>
+                  <p class="text-blue-600 text-sm">Medical Director</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:w-3/5 lg:pl-12">
+            <div class="bg-gray-50 rounded-lg p-6">
+              <h3
+                class="text-2xl font-semibold mb-4 text-gray-700 border-b pb-2"
+              >
+                Professional Background
+              </h3>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Dr. Manshi Singh is a highly qualified medical professional with
+                extensive experience in patient care. She completed her medical
+                education from prestigious institutions and has been practicing
+                for several years, earning recognition for her dedication and
+                expertise in general medicine and community healthcare.
+              </p>
+
+              <h3
+                class="text-2xl font-semibold mb-4 text-gray-700 border-b pb-2"
+              >
+                Education
+              </h3>
+              <ul class="space-y-3 mb-6">
+                <li class="flex items-start bg-white p-3 rounded-lg shadow-sm">
+                  <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                    <i class="fas fa-graduation-cap"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-800">
+                      MD in General Medicine
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      Prestigious Medical University, 2015
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start bg-white p-3 rounded-lg shadow-sm">
+                  <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                    <i class="fas fa-graduation-cap"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-800">MBBS</h4>
+                    <p class="text-gray-600 text-sm">
+                      Renowned Medical College, 2010
+                    </p>
+                  </div>
+                </li>
+              </ul>
+
+              <h3
+                class="text-2xl font-semibold mb-4 text-gray-700 border-b pb-2"
+              >
+                Experience
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start bg-white p-3 rounded-lg shadow-sm">
+                  <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                    <i class="fas fa-briefcase-medical"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-800">
+                      10+ Years of Experience
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      Specializing in General Medicine and Community Health
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start bg-white p-3 rounded-lg shadow-sm">
+                  <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                    <i class="fas fa-briefcase-medical"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-800">
+                      Former Senior Resident
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      At Reputed Hospital, Noida
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clinic Facilities Section (Hindi + English) -->
+    <section id="facilities" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-2">
+            Clinic Facilities
+          </h2>
+          <h3 class="text-xl hindi text-gray-700">क्लिनिक सुविधाएं</h3>
+          <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow-md overflow-hidden transform transition hover:shadow-lg"
+        >
+          <div class="hero-gradient text-white p-6 text-center">
+            <h3 class="text-2xl font-bold">Our Comprehensive Facilities</h3>
+            <p class="text-blue-100">
+              Modern healthcare services for all your needs
+            </p>
+          </div>
+
+          <div class="p-6 md:p-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Hindi Column -->
+              <div class="space-y-5">
+                <h4
+                  class="text-xl font-semibold text-gray-700 border-b pb-2 hindi"
+                >
+                  उपलब्ध सुविधाएं
+                </h4>
+
+                <div class="flex items-start bg-gray-50 p-4 rounded-lg">
+                  <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-medium hindi">24 घण्टे सुविधा उपलब्ध</h5>
+                    <p class="text-gray-600 text-sm hindi">
+                      रात्रि आपातकालीन सेवाएं
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start bg-gray-50 p-4 rounded-lg">
+                  <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                    <i class="fas fa-hospital-user"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-medium hindi">ओ.पी.डी-आई.पी.डी सुविधा</h5>
+                    <p class="text-gray-600 text-sm hindi">
+                      आउट पेशेंट और इन पेशेंट सेवाएं
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start bg-gray-50 p-4 rounded-lg">
+                  <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                    <i class="fas fa-lungs"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-medium hindi">नेबुलाइजर की सुविधा</h5>
+                    <p class="text-gray-600 text-sm hindi">
+                      श्वसन समस्याओं के लिए उपचार
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start bg-gray-50 p-4 rounded-lg">
+                  <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                    <i class="fas fa-microscope"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-medium hindi">प्रयोगशाला जाँच सुविधा</h5>
+                    <p class="text-gray-600 text-sm hindi">
+                      मलेरिया, टाईफाइड, शुगर, थाईराइड आदि
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- English Column -->
+              <div class="space-y-5">
+                <h4 class="text-xl font-semibold text-gray-700 border-b pb-2">
+                  Available Facilities
+                </h4>
+
+                <div class="flex items-start bg-gray-50 p-4 rounded-lg">
+                  <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                    <i class="fas fa-ambulance"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-medium">24/7 Emergency Services</h5>
+                    <p class="text-gray-600 text-sm">
+                      Round-the-clock medical assistance
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start bg-gray-50 p-4 rounded-lg">
+                  <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                    <i class="fas fa-pills"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-medium">Pharmacy Services</h5>
+                    <p class="text-gray-600 text-sm">
+                      In-house medication availability
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start bg-gray-50 p-4 rounded-lg">
+                  <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                    <i class="fas fa-procedures"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-medium">Minor Procedures</h5>
+                    <p class="text-gray-600 text-sm">
+                      Wound care, injections, and more
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start bg-gray-50 p-4 rounded-lg">
+                  <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                    <i class="fas fa-heartbeat"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-medium">Health Check-ups</h5>
+                    <p class="text-gray-600 text-sm">
+                      Comprehensive diagnostic services
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 bg-blue-50 border border-blue-100 rounded-lg p-4">
+              <h4 class="text-lg font-semibold text-blue-800 mb-2">Note:</h4>
+              <p class="text-gray-700 hindi">
+                सभी प्रकार की जाँच एवं उपचार सुविधाएं उपलब्ध | आधुनिक मशीनों
+                द्वारा सटीक निदान
+              </p>
+              <p class="text-gray-700 mt-1">
+                All types of tests and treatments available | Accurate diagnosis
+                with modern equipment
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-2">
+            Our Medical Services
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Comprehensive healthcare solutions tailored to meet your individual
+            needs
+          </p>
+          <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Service 1 -->
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md"
+          >
+            <div class="text-blue-500 mb-4 flex items-center">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-heartbeat text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800">
+                General Medicine
+              </h3>
+            </div>
+            <p class="text-gray-600 pl-16">
+              Comprehensive diagnosis and treatment for common illnesses,
+              infections, and chronic conditions including diabetes and
+              hypertension.
+            </p>
+            <div class="mt-4 pl-16">
+              <span
+                class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2"
+                >OPD</span
+              >
+              <span
+                class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                >Follow-ups</span
+              >
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md"
+          >
+            <div class="text-blue-500 mb-4 flex items-center">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-child text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800">Pediatrics</h3>
+            </div>
+            <p class="text-gray-600 pl-16">
+              Specialized care for infants, children, and adolescents, including
+              vaccinations, growth monitoring, and childhood illnesses.
+            </p>
+            <div class="mt-4 pl-16">
+              <span
+                class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2"
+                >Vaccination</span
+              >
+              <span
+                class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                >Child Care</span
+              >
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md"
+          >
+            <div class="text-blue-500 mb-4 flex items-center">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-female text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800">
+                Women's Health
+              </h3>
+            </div>
+            <p class="text-gray-600 pl-16">
+              Comprehensive care including reproductive health, pregnancy care,
+              menopause management, and general wellness for women.
+            </p>
+            <div class="mt-4 pl-16">
+              <span
+                class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2"
+                >Prenatal</span
+              >
+              <span
+                class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                >Gynecology</span
+              >
+            </div>
+          </div>
+
+          <!-- Service 4 -->
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md"
+          >
+            <div class="text-blue-500 mb-4 flex items-center">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-thermometer-half text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800">
+                Fever & Infections
+              </h3>
+            </div>
+            <p class="text-gray-600 pl-16">
+              Diagnosis and treatment of viral, bacterial, and other infectious
+              diseases including dengue, malaria, and typhoid.
+            </p>
+            <div class="mt-4 pl-16">
+              <span
+                class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2"
+                >Dengue</span
+              >
+              <span
+                class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                >Typhoid</span
+              >
+            </div>
+          </div>
+
+          <!-- Service 5 -->
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md"
+          >
+            <div class="text-blue-500 mb-4 flex items-center">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-allergies text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800">
+                Allergy & Asthma
+              </h3>
+            </div>
+            <p class="text-gray-600 pl-16">
+              Management of allergic conditions, asthma, and respiratory
+              disorders with modern diagnostic tools and treatment plans.
+            </p>
+            <div class="mt-4 pl-16">
+              <span
+                class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2"
+                >Nebulization</span
+              >
+              <span
+                class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                >Skin Tests</span
+              >
+            </div>
+          </div>
+
+          <!-- Service 6 -->
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md"
+          >
+            <div class="text-blue-500 mb-4 flex items-center">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-heart text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800">
+                Chronic Diseases
+              </h3>
+            </div>
+            <p class="text-gray-600 pl-16">
+              Ongoing care for diabetes, hypertension, thyroid disorders,
+              arthritis, and other chronic conditions with regular monitoring.
+            </p>
+            <div class="mt-4 pl-16">
+              <span
+                class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2"
+                >Diabetes</span
+              >
+              <span
+                class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                >Hypertension</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <a
+            href="#contact"
+            class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition transform hover:scale-105"
+          >
+            Book Your Consultation Today <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 hero-gradient text-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-2">Patient Testimonials</h2>
+          <p class="text-blue-100 max-w-2xl mx-auto">
+            Hear what our patients say about their experience at Bhagwati Clinic
+          </p>
+          <div class="w-20 h-1 bg-white mx-auto"></div>
+        </div>
+
+        <!-- Grid Layout for Large Screens -->
+        <div class="testimonial-grid max-w-6xl mx-auto">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mr-4"
+              >
+                <i class="fas fa-user text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Rahul Sharma</h4>
+                <p class="text-blue-200 text-sm">Diabetes Management</p>
+              </div>
+            </div>
+            <div class="flex mb-2">
+              <i class="fas fa-star text-yellow-300 mr-1"></i>
+              <i class="fas fa-star text-yellow-300 mr-1"></i>
+              <i class="fas fa-star text-yellow-300 mr-1"></i>
+              <i class="fas fa-star text-yellow-300 mr-1"></i>
+              <i class="fas fa-star text-yellow-300"></i>
+            </div>
+            <p class="text-blue-100">
+              "Dr. Singh's approach to my diabetes management has been
+              life-changing. Her detailed explanations and personalized
+              treatment plan helped me get my blood sugar under control within
+              months. The regular follow-ups show her dedication."
+            </p>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mr-4"
+              >
+                <i class="fas fa-user text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Priya Patel</h4>
+                <p class="text-blue-200 text-sm">Pediatric Care</p>
+              </div>
+            </div>
+            <div class="flex mb-2">
+              <i class="fas fa-star text-yellow-300 mr-1"></i>
+              <i class="fas fa-star text-yellow-300 mr-1"></i>
+              <i class="fas fa-star text-yellow-300 mr-1"></i>
+              <i class="fas fa-star text-yellow-300 mr-1"></i>
+              <i class="fas fa-star text-yellow-300"></i>
+            </div>
+            <p class="text-blue-100">
+              "As a mother of two, I completely trust Dr. Singh with my
+              children's health. She has a wonderful way with kids - they're
+              never afraid of visiting her clinic. Her accurate diagnoses make
+              her our family doctor."
+            </p>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mr-4"
+              >
+                <i class="fas fa-user text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Amit Kumar</h4>
+                <p class="text-blue-200 text-sm">Chronic Allergy</p>
+              </div>
+            </div>
+            <div class="flex mb-2">
+              <i class="fas fa-star text-yellow-300 mr-1"></i>
+              <i class="fas fa-star text-yellow-300 mr-1"></i>
+              <i class="fas fa-star text-yellow-300 mr-1"></i>
+              <i class="fas fa-star text-yellow-300 mr-1"></i>
+              <i class="fas fa-star-half-alt text-yellow-300"></i>
+            </div>
+            <p class="text-blue-100">
+              "After suffering from severe allergies for years, Dr. Singh's
+              comprehensive treatment finally gave me relief. Her knowledge of
+              latest treatments is remarkable. The clinic's facilities are
+              excellent."
+            </p>
+          </div>
+        </div>
+
+        <!-- Carousel for Mobile -->
+        <div class="testimonial-carousel relative max-w-4xl mx-auto">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-slide active">
+            <div class="testimonial-card p-6 rounded-lg">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mr-4"
+                >
+                  <i class="fas fa-user text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Rahul Sharma</h4>
+                  <p class="text-blue-200 text-sm">Diabetes Management</p>
+                </div>
+              </div>
+              <div class="flex mb-2">
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300"></i>
+              </div>
+              <p class="text-blue-100">
+                "Dr. Singh's approach to my diabetes management has been
+                life-changing. Her detailed explanations and personalized
+                treatment plan helped me get my blood sugar under control within
+                months. The regular follow-ups show her dedication."
+              </p>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-card p-6 rounded-lg">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mr-4"
+                >
+                  <i class="fas fa-user text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Priya Patel</h4>
+                  <p class="text-blue-200 text-sm">Pediatric Care</p>
+                </div>
+              </div>
+              <div class="flex mb-2">
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300"></i>
+              </div>
+              <p class="text-blue-100">
+                "As a mother of two, I completely trust Dr. Singh with my
+                children's health. She has a wonderful way with kids - they're
+                never afraid of visiting her clinic. Her accurate diagnoses make
+                her our family doctor."
+              </p>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-card p-6 rounded-lg">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mr-4"
+                >
+                  <i class="fas fa-user text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Amit Kumar</h4>
+                  <p class="text-blue-200 text-sm">Chronic Allergy</p>
+                </div>
+              </div>
+              <div class="flex mb-2">
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star-half-alt text-yellow-300"></i>
+              </div>
+              <p class="text-blue-100">
+                "After suffering from severe allergies for years, Dr. Singh's
+                comprehensive treatment finally gave me relief. Her knowledge of
+                latest treatments is remarkable. The clinic's facilities are
+                excellent."
+              </p>
+            </div>
+          </div>
+
+          <!-- Testimonial 4 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-card p-6 rounded-lg">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mr-4"
+                >
+                  <i class="fas fa-user text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Neha Gupta</h4>
+                  <p class="text-blue-200 text-sm">Women's Health</p>
+                </div>
+              </div>
+              <div class="flex mb-2">
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300"></i>
+              </div>
+              <p class="text-blue-100">
+                "Dr. Manshi Singh provides the most compassionate care I've ever
+                experienced. She takes time to listen and addresses all concerns
+                with patience. Her expertise in women's health issues is
+                exceptional."
+              </p>
+            </div>
+          </div>
+
+          <!-- Testimonial 5 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-card p-6 rounded-lg">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mr-4"
+                >
+                  <i class="fas fa-user text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Vikram Joshi</h4>
+                  <p class="text-blue-200 text-sm">Emergency Care</p>
+                </div>
+              </div>
+              <div class="flex mb-2">
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                <i class="fas fa-star text-yellow-300"></i>
+              </div>
+              <p class="text-blue-100">
+                "When I had a severe fever late at night, Dr. Singh's 24-hour
+                availability was a lifesaver. Her prompt diagnosis and treatment
+                helped me recover quickly. The clinic's emergency services are
+                truly reliable."
+              </p>
+            </div>
+          </div>
+
+          <div class="carousel-dots">
+            <span class="carousel-dot active" data-slide="0"></span>
+            <span class="carousel-dot" data-slide="1"></span>
+            <span class="carousel-dot" data-slide="2"></span>
+            <span class="carousel-dot" data-slide="3"></span>
+            <span class="carousel-dot" data-slide="4"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-2">Contact Us</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Get in touch for appointments or inquiries
+          </p>
+          <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+          <div class="lg:w-1/2">
+            <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
+              <h3 class="text-2xl font-semibold mb-6 text-gray-700">
+                Clinic Information
+              </h3>
+
+              <div class="space-y-6">
+                <div class="flex items-start">
+                  <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-700">Clinic Address</h4>
+                    <p class="text-gray-600 hindi mt-1">
+                      चौo गणेशी चेची मार्किट, सैक्टर-155 नियर इस्कॉन मंदिर
+                      नोएडा, गौतमबुद्ध नगर (उ. प्र)
+                    </p>
+                    <p class="text-gray-600 mt-1">
+                      Chowki Ganeshi Chechi Market, Sector-155 Near ISKCON
+                      Temple, Noida, Gautam Buddha Nagar (U.P.)
+                    </p>
+                    <a
+                      href="https://g.co/kgs/Xb4AwkN"
+                      class="inline-block mt-2 text-blue-600 hover:text-blue-800 text-sm"
+                    >
+                      <i class="fas fa-map-marker-alt mr-1"></i> View on Google
+                      Maps
+                    </a>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                    <i class="fas fa-phone-alt"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-700">Phone Numbers</h4>
+                    <p class="text-gray-600 mt-1">
+                      <a href="tel:8375807290" class="hover:text-blue-600"
+                        >+91 8375807290</a
+                      >
+                    </p>
+                    <p class="text-gray-600">
+                      <a href="tel:8860689320" class="hover:text-blue-600"
+                        >+91 8860689320</a
+                      >
+                    </p>
+                    <p class="text-gray-600 text-sm mt-2">
+                      <i class="fas fa-info-circle mr-1"></i> Emergency calls
+                      accepted 24/7
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-700">Email</h4>
+                    <p class="text-gray-600 mt-1">
+                      <a
+                        href="mailto:manu03762@gmail.com"
+                        class="hover:text-blue-600"
+                        >manu03762@gmail.com</a
+                      >
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-700">Working Hours</h4>
+                    <div class="mt-1">
+                      <div
+                        class="flex justify-between py-2 border-b border-gray-200"
+                      >
+                        <span class="text-gray-600">Monday - Friday</span>
+                        <span class="text-gray-800 font-medium"
+                          >9:00 AM - 5:00 PM</span
+                        >
+                      </div>
+                      <div
+                        class="flex justify-between py-2 border-b border-gray-200"
+                      >
+                        <span class="text-gray-600">Saturday</span>
+                        <span class="text-gray-800 font-medium"
+                          >10:00 AM - 2:00 PM</span
+                        >
+                      </div>
+                      <div class="flex justify-between py-2">
+                        <span class="text-gray-600">Sunday</span>
+                        <span class="text-gray-800 font-medium">Closed</span>
+                      </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">
+                      <i class="fas fa-exclamation-circle mr-1"></i> Emergency
+                      services available 24/7
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 bg-blue-50 border border-blue-100 rounded-xl p-6">
+              <h4 class="text-lg font-semibold text-blue-800 mb-3">
+                Connect With Us
+              </h4>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="bg-blue-100 text-blue-600 hover:bg-blue-200 w-10 h-10 rounded-full flex items-center justify-center transition"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="#"
+                  class="bg-blue-100 text-blue-600 hover:bg-blue-200 w-10 h-10 rounded-full flex items-center justify-center transition"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a
+                  href="https://wa.me/918375807290"
+                  class="bg-green-100 text-green-600 hover:bg-green-200 w-10 h-10 rounded-full flex items-center justify-center transition"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+                <a
+                  href="#"
+                  class="bg-blue-100 text-blue-600 hover:bg-blue-200 w-10 h-10 rounded-full flex items-center justify-center transition"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:w-1/2">
+            <div class="contact-card rounded-xl p-6 shadow-sm h-full">
+              <h3 class="text-2xl font-semibold mb-6 text-gray-700">
+                Quick Contact Form
+              </h3>
+
+              <form
+                action="https://script.google.com/macros/s/AKfycbzjXMH-CJtJxiHVW1bofevhwSP6CAEGPMCPQ_3l9oa0Q8qbpFdULN7gqokQKmUrCygs/exec"
+                method="POST"
+                class="space-y-4"
+                target="_blank"
+                id="contactForm"
+                class="space-y-4"
+              >
+                <!-- Name Field -->
+                <div>
+                  <label for="Full Name" class="block text-gray-700 mb-1"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    name="Full Name"
+                    id="Full Name"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Your Name"
+                    required
+                  />
+                </div>
+
+                <!-- Phone Field -->
+                <div>
+                  <label for="Phone Number" class="block text-gray-700 mb-1"
+                    >Phone Number</label
+                  >
+                  <input
+                    type="tel"
+                    name="Phone Number"
+                    id="Phone Number"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="+91 XXXXXXXXXX"
+                    required
+                  />
+                </div>
+
+                <!-- Email Field -->
+                <div>
+                  <label for="Email Address" class="block text-gray-700 mb-1"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    name="Email Address"
+                    id="Email Address"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="your@email.com"
+                  />
+                </div>
+
+                <!-- Service Field -->
+                <div>
+                  <label for="Service Needed" class="block text-gray-700 mb-1"
+                    >Service Needed</label
+                  >
+                  <select
+                    name="Service Needed"
+                    id="Service Needed"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  >
+                    <option value="">Select a service</option>
+                    <option value="General Consultation">
+                      General Consultation
+                    </option>
+                    <option value="Pediatric Care">Pediatric Care</option>
+                    <option value="Women's Health">Women's Health</option>
+                    <option value="Chronic Disease Management">
+                      Chronic Disease Management
+                    </option>
+                    <option value="Emergency Care">Emergency Care</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <!-- Message Field -->
+                <div>
+                  <label for="Message" class="block text-gray-700 mb-1"
+                    >Message</label
+                  >
+                  <textarea
+                    name="Message"
+                    id="Message"
+                    rows="4"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Your message or appointment request"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-[1.02]"
+                >
+                  Send Message <i class="fas fa-paper-plane ml-2"></i>
+                </button>
+              </form>
+              <div
+                id="successMessage"
+                class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+              >
+                <div class="bg-white p-6 rounded-lg max-w-md text-center">
+                  <svg
+                    class="mx-auto h-12 w-12 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  <h3 class="text-lg font-medium text-gray-900 mt-3">
+                    Thank you!
+                  </h3>
+                  <p class="text-gray-500 mt-2">
+                    Your message has been sent successfully.
+                  </p>
+                  <button
+                    onclick="document.getElementById('successMessage').classList.add('hidden')"
+                    class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+
+              <div class="mt-6 flex flex-col sm:flex-row gap-4">
+                <a
+                  href="https://wa.me/918375807290"
+                  class="flex-1 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2"
+                >
+                  <i class="fab fa-whatsapp text-xl"></i> WhatsApp
+                </a>
+                <a
+                  href="tel:8375807290"
+                  class="flex-1 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2"
+                >
+                  <i class="fas fa-phone-alt text-xl"></i> Call Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="w-full bg-gray-100">
+      <div class="container mx-auto px-4 py-8">
+        <div class="rounded-xl overflow-hidden shadow-lg">
+          <div
+            class="relative w-full h-96 bg-cover bg-center"
+            style="background-image: url('./map.png')"
+          >
+            <!-- Overlay with content -->
+            <div class="absolute inset-0 bg-white bg-opacity-5">
+              <div
+                class="absolute bottom-4 right-4 rounded-lg shadow-md text-right max-w-sm"
+              >
+                <a
+                  href="https://g.co/kgs/BpRt8N9"
+                  class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded font-medium transition"
+                >
+                  <i class="fas fa-map-marker-alt mr-1"></i> Open in Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <i class="fas fa-heartbeat text-2xl text-blue-400"></i>
+              <h2 class="text-xl font-bold">Bhagwati Clinic</h2>
+            </div>
+            <p class="text-gray-400 mb-4">
+              Providing compassionate healthcare services to the community with
+              dedication and expertise.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3
+              class="text-lg font-semibold mb-4 border-b pb-2 border-gray-700"
+            >
+              Quick Links
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-white transition"
+                  >About Dr. Singh</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition"
+                  >Our Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#facilities"
+                  class="text-gray-400 hover:text-white transition"
+                  >Facilities</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3
+              class="text-lg font-semibold mb-4 border-b pb-2 border-gray-700"
+            >
+              Services
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >General Medicine</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Pediatric Care</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Women's Health</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Chronic Disease</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Emergency Care</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3
+              class="text-lg font-semibold mb-4 border-b pb-2 border-gray-700"
+            >
+              Contact Info
+            </h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt text-gray-400 mt-1 mr-3"></i>
+                <span class="text-gray-400"
+                  >Sai Nargi Devi Complex, Bypass-155, Noida</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-phone-alt text-gray-400 mt-1 mr-3"></i>
+                <span class="text-gray-400">+91 8375807290</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-envelope text-gray-400 mt-1 mr-3"></i>
+                <span class="text-gray-400">manu03762@gmail.com</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-clock text-gray-400 mt-1 mr-3"></i>
+                <span class="text-gray-400"
+                  >Mon-Fri: 9AM-5PM, Sat: 10AM-2PM</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-700 pt-6 text-center text-gray-400">
+          <p>&copy; 2025 Bhagwati Clinic. All rights reserved.</p>
+          <p class="text-sm mt-2">
+            Designed with <i class="fas fa-heart text-red-400"></i> for better
+            healthcare
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a
+      href="#home"
+      class="fixed bottom-6 right-6 bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition transform hover:scale-110"
+      id="back-to-top"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("menu-toggle")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu");
+          menu.classList.toggle("open");
+        });
+
+      // Smooth scrolling for all links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Back to top button visibility
+      window.addEventListener("scroll", function () {
+        const backToTopButton = document.getElementById("back-to-top");
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.add("show");
+        } else {
+          backToTopButton.classList.remove("show");
+        }
+      });
+
+      // Testimonial Carousel
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".testimonial-slide");
+      const dots = document.querySelectorAll(".carousel-dot");
+
+      function showSlide(n) {
+        slides.forEach((slide) => slide.classList.remove("active"));
+        dots.forEach((dot) => dot.classList.remove("active"));
+
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add("active");
+        dots[currentSlide].classList.add("active");
+      }
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => showSlide(index));
+      });
+
+      // Auto-rotate testimonials
+      setInterval(() => {
+        showSlide(currentSlide + 1);
+      }, 5000);
+
+      // Initialize first slide
+      showSlide(0);
+
+      // Enhanced submission handling
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("contactForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const form = this;
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => (data[key] = value));
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML =
+              'Sending... <i class="fas fa-spinner fa-spin ml-2"></i>';
+
+            fetch(
+              "https://script.google.com/macros/s/AKfycbzjXMH-CJtJxiHVW1bofevhwSP6CAEGPMCPQ_3l9oa0Q8qbpFdULN7gqokQKmUrCygs/exec",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: new URLSearchParams(data).toString(),
+              }
+            )
+              .then((response) => response.json())
+              .then((respData) => {
+                if (respData.status === "success") {
+                  const successDiv = document.getElementById("successMessage");
+                  if (successDiv) {
+                    successDiv.classList.remove("hidden");
+                  }
+                  form.reset();
+                } else {
+                  alert("Error submitting form: " + respData.message);
+                }
+              })
+              .catch((error) => {
+                alert("There was an error submitting the form.");
+                console.error(error);
+              })
+              .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML =
+                  'Send Message <i class="fas fa-paper-plane ml-2"></i>';
+              });
+          });
+      });
+    </script>
+  </body>
+</html>
